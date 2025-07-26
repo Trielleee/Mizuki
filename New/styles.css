@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.resource-display {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #e8f4fd;
+    border-radius: 8px;
+}
+
+.resource {
+    text-align: center;
+}
+
+.resource-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.resource-label {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.section h3 {
+    margin-top: 0;
+    color: #34495e;
+}
+
+.upgrade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.upgrade-info {
+    flex: 1;
+}
+
+.upgrade-name {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.upgrade-description {
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+.upgrade-cost {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.upgrade-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.upgrade-button:hover {
+    background: #2980b9;
+}
+
+.upgrade-button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.manual-button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.manual-button:hover {
+    background: #229954;
+} 

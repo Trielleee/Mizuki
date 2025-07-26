@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单 Idle Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>简单 Idle Game</h1>
+        
+        <!-- 资源显示 -->
+        <div class="resource-display">
+            <div class="resource">
+                <div class="resource-value" id="coins">0</div>
+                <div class="resource-label">金币</div>
+            </div>
+            <div class="resource">
+                <div class="resource-value" id="coinsPerSecond">0</div>
+                <div class="resource-label">每秒金币</div>
+            </div>
+            <div class="resource">
+                <div class="resource-value" id="clickPower">1</div>
+                <div class="resource-label">点击力量</div>
+            </div>
+        </div>
+
+        <!-- 手动点击区域 -->
+        <div class="section">
+            <h3>手动点击</h3>
+            <button class="manual-button" onclick="manualClick()">点击获得金币</button>
+        </div>
+
+        <!-- 自动生产升级 -->
+        <div class="section">
+            <h3>自动生产升级</h3>
+            <div class="upgrade-item">
+                <div class="upgrade-info">
+                    <div class="upgrade-name">自动点击器</div>
+                    <div class="upgrade-description">每秒自动点击一次</div>
+                </div>
+                <div class="upgrade-cost" id="autoClickerCost">10</div>
+                <button class="upgrade-button" onclick="buyAutoClicker()" id="autoClickerBtn">购买</button>
+            </div>
+            <div class="upgrade-item">
+                <div class="upgrade-info">
+                    <div class="upgrade-name">金币矿场</div>
+                    <div class="upgrade-description">每秒生产2个金币</div>
+                </div>
+                <div class="upgrade-cost" id="mineCost">50</div>
+                <button class="upgrade-button" onclick="buyMine()" id="mineBtn">购买</button>
+            </div>
+        </div>
+
+        <!-- 点击力量升级 -->
+        <div class="section">
+            <h3>点击力量升级</h3>
+            <div class="upgrade-item">
+                <div class="upgrade-info">
+                    <div class="upgrade-name">增强点击</div>
+                    <div class="upgrade-description">增加点击获得的金币数量</div>
+                </div>
+                <div class="upgrade-cost" id="clickPowerCost">25</div>
+                <button class="upgrade-button" onclick="buyClickPower()" id="clickPowerBtn">购买</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="debug.js"></script>
+</body>
+</html> 
