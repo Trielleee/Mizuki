@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放置宠物养成</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/battle.css">
+    <link rel="stylesheet" href="css/inventory.css">
+    <link rel="stylesheet" href="css/pokedex.css">
+    <link rel="stylesheet" href="css/map.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 左侧菜单栏 -->
+        <div class="sidebar">
+            <div class="menu-item active" data-panel="battle">
+                <span class="menu-icon">⚔️</span>
+                <span class="menu-text">战斗</span>
+            </div>
+            <div class="menu-item" data-panel="inventory">
+                <span class="menu-icon">🎒</span>
+                <span class="menu-text">背包</span>
+            </div>
+            <div class="menu-item" data-panel="pokedex">
+                <span class="menu-icon">📖</span>
+                <span class="menu-text">图鉴</span>
+            </div>
+            <div class="menu-item" data-panel="map">
+                <span class="menu-icon">🗺️</span>
+                <span class="menu-text">地图</span>
+            </div>
+        </div>
+
+        <!-- 右侧功能面板区域 -->
+        <div class="main-content">
+            <!-- 顶部状态栏 -->
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="status-label">金币:</span>
+                    <span id="gold" class="status-value">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">精灵球:</span>
+                    <span id="pokeballs" class="status-value">5</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">等级:</span>
+                    <span id="player-level" class="status-value">1</span>
+                </div>
+            </div>
+
+            <!-- 战斗面板 -->
+            <div id="battle-panel" class="panel active">
+                <div class="battle-container">
+                    <div class="battle-info">
+                        <h2>自动战斗</h2>
+                        <div class="battle-status">
+                            <span id="battle-status">准备中...</span>
+                            <div class="progress-bar">
+                                <div id="battle-progress" class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="battle-area">
+                        <div class="player-pokemon">
+                            <h3>你的宠物</h3>
+                            <div id="player-pokemon-display" class="pokemon-display">
+                                <div class="pokemon-placeholder">未选择宠物</div>
+                            </div>
+                        </div>
+                        
+                        <div class="vs-area">
+                            <div class="vs-text">VS</div>
+                        </div>
+                        
+                        <div class="enemy-pokemon">
+                            <h3>敌人</h3>
+                            <div id="enemy-pokemon-display" class="pokemon-display">
+                                <div class="pokemon-placeholder">等待敌人...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="battle-controls">
+                        <div class="pokeball-equipment">
+                            <h4>装备精灵球</h4>
+                            <div class="pokeball-selector">
+                                <select id="pokeball-selector">
+                                    <option value="精灵球">精灵球 (5%)</option>
+                                    <option value="超级球">超级球 (15%)</option>
+                                    <option value="大师球">大师球 (100%)</option>
+                                </select>
+                                <span id="equipped-pokeball-count" class="pokeball-count">5</span>
+                            </div>
+                        </div>
+                        <div class="battle-buttons">
+                            <button id="start-battle" class="btn btn-primary">开始战斗</button>
+                            <button id="stop-battle" class="btn btn-secondary" disabled>停止战斗</button>
+                        </div>
+                    </div>
+                    
+                    <div class="battle-log">
+                        <h3>战斗记录</h3>
+                        <div id="battle-log-content" class="log-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 背包面板 -->
+            <div id="inventory-panel" class="panel">
+                <div class="inventory-container">
+                    <h2>背包</h2>
+                    <div class="inventory-tabs">
+                        <button class="tab-btn active" data-tab="pokemon">宠物</button>
+                        <button class="tab-btn" data-tab="items">道具</button>
+                    </div>
+                    
+                    <div id="pokemon-tab" class="tab-content active">
+                        <div class="pokemon-grid" id="pokemon-grid">
+                            <!-- 宠物列表将在这里动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <div id="items-tab" class="tab-content">
+                        <div class="items-list" id="items-list">
+                            <!-- 道具列表将在这里动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 图鉴面板 -->
+            <div id="pokedex-panel" class="panel">
+                <div class="pokedex-container">
+                    <h2>图鉴</h2>
+                    <div class="pokedex-filters">
+                        <select id="rarity-filter">
+                            <option value="">所有稀有度</option>
+                            <option value="Common">普通</option>
+                            <option value="Rare">稀有</option>
+                            <option value="Epic">史诗</option>
+                            <option value="Legendary">传说</option>
+                        </select>
+                        <select id="element-filter">
+                            <option value="">所有属性</option>
+                            <option value="Fire">火</option>
+                            <option value="Water">水</option>
+                            <option value="Grass">草</option>
+                            <option value="Electric">电</option>
+                            <option value="Normal">普通</option>
+                        </select>
+                    </div>
+                    <div class="pokedex-grid" id="pokedex-grid">
+                        <!-- 图鉴内容将在这里动态生成 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 地图面板 -->
+            <div id="map-panel" class="panel">
+                <div class="map-container">
+                    <h2>地图</h2>
+                    <div class="map-info">
+                        <div class="current-map">
+                            <h3>当前地图: <span id="current-map-name">新手村</span></h3>
+                            <p>推荐等级: <span id="map-level-range">1-10</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="map-selection">
+                        <h3>选择地图</h3>
+                        <div class="map-grid" id="map-grid">
+                            <!-- 地图选择将在这里动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <div class="map-pokemon">
+                        <h3>地图宠物</h3>
+                        <div class="map-pokemon-list" id="map-pokemon-list">
+                            <!-- 地图宠物列表将在这里动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- 脚本引入 -->
+    <script src="js/data/pokemon-templates.js"></script>
+    <script src="js/data/map-data.js"></script>
+    <script src="js/models/pokemon.js"></script>
+    <script src="js/models/player.js"></script>
+    <script src="js/systems/battle-system.js"></script>
+    <script src="js/systems/inventory-system.js"></script>
+    <script src="js/systems/pokedex-system.js"></script>
+    <script src="js/systems/map-system.js"></script>
+    <script src="js/ui/ui-manager.js"></script>
+    <script src="js/ui/battle-ui.js"></script>
+    <script src="js/ui/inventory-ui.js"></script>
+    <script src="js/ui/pokedex-ui.js"></script>
+    <script src="js/ui/map-ui.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/utils/random.js"></script>
+    <script src="js/utils/debug-tools.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
